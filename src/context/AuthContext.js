@@ -21,6 +21,6 @@ const signout = (dispatch) => {
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  {},
+  { signup, signin, signout },
   { isSignedin: false }
 );
