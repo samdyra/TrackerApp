@@ -1,16 +1,23 @@
-import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import React, { useContext, useState } from "react";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import AuthForm from "../components/AuthForm";
+import { Context } from "../context/AuthContext";
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }) => {
+  const { state, signin } = useContext(Context);
   return (
     <View style={styles.container}>
       <AuthForm
         headerText="Sign in to your account"
-        errorMessage=""
-        onSubmit=""
+        errorMessage={state.errorMessage}
+        onSubmit={signin}
         submitButtonText="Sign in"
       ></AuthForm>
+      <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+        <Text style={styles.link}>
+          Doesnt have account yet? Signup instead!
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 380,
+    marginBottom: 350,
   },
   link: {
     color: "blue",
