@@ -8,6 +8,7 @@ import { NavigationEvents } from "react-navigation";
 
 const SignupScreen = ({ navigation }) => {
   const { state, signup, clearErrorMessage } = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <NavigationEvents onWillFocus={clearErrorMessage}></NavigationEvents>

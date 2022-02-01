@@ -11,8 +11,20 @@ const authReducer = (state, action) => {
       return { errorMessage: "", errorMessage: action.payload }; //error message is === empty string to handle UX where => signup with invalid value, then signup again.
     case "clear_error_message":
       return { ...state, errorMessage: "" };
+    case "signout":
+      return { token: null, errorMessage: "" };
     default:
       return state;
+  }
+};
+
+const tryLocalSignin = (dispatch) => async () => {
+  const token = await AsyncStorage.getItem("token");
+  if (token) {
+    dispatch({ type: "signin", payload: token });
+    navigate("TrackList");
+  } else {
+    navigate("Signup");
   }
 };
 
@@ -50,11 +62,15 @@ const signin = (dispatch) => {
 };
 
 const signout = (dispatch) => {
-  return () => {};
+  return async () => {
+    await AsyncStorage.removeItem("token");
+    dispatch({ type: "signout" });
+    navigate("loginFlow");
+  };
 };
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signup, signin, signout, clearErrorMessage },
+  { signup, signin, signout, clearErrorMessage, tryLocalSignin },
   { token: null, errorMessage: "" }
 );
