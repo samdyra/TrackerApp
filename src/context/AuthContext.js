@@ -9,9 +9,15 @@ const authReducer = (state, action) => {
       return { ...state, token: action.payload };
     case "add_error":
       return { errorMessage: "", errorMessage: action.payload }; //error message is === empty string to handle UX where => signup with invalid value, then signup again.
+    case "clear_error_message":
+      return { ...state, errorMessage: "" };
     default:
       return state;
   }
+};
+
+const clearErrorMessage = (dispatch) => () => {
+  dispatch({ type: "clear_error_message" });
 };
 
 const signup = (dispatch) => {
@@ -49,6 +55,6 @@ const signout = (dispatch) => {
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signup, signin, signout },
+  { signup, signin, signout, clearErrorMessage },
   { token: null, errorMessage: "" }
 );
