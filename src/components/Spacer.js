@@ -2,7 +2,6 @@ import React, { Children } from "react";
 import { View, StyleSheet } from "react-native";
 
 const Spacer = ({ children }) => {
-  console.log(children);
   return <View style={styles.spacer}>{children}</View>;
 };
 
