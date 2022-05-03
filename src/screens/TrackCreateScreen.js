@@ -2,7 +2,6 @@ import React, { useContext, useCallback } from "react";
 import { View, StyleSheet, SafeAreaView } from "react-native";
 import { Text } from "react-native-elements";
 import Map from "../components/Map";
-import "../_mockLocation";
 import { Context as LocationContext } from "../context/LocationContext";
 import useLocation from "../hooks/useLocation";
 import { withNavigationFocus } from "react-navigation";
