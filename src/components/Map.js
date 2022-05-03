@@ -11,12 +11,7 @@ const Map = () => {
   // console.log(currentLocation.coords);
 
   if (!currentLocation) {
-    return (
-      <ActivityIndicator
-        size="large"
-        style={{ marginTop: 200 }}
-      ></ActivityIndicator>
-    );
+    return <ActivityIndicator size="large" style={{ marginTop: 200 }}></ActivityIndicator>;
   }
   return (
     <MapView
@@ -27,12 +22,7 @@ const Map = () => {
         longitudeDelta: 0.01,
       }}
     >
-      <Circle
-        center={currentLocation.coords}
-        radius={30}
-        strokeColor="rgba(158, 158, 255, 1.0)"
-        fillColor="rgba(158, 158, 255, 0.3)"
-      ></Circle>
+      <Circle center={currentLocation.coords} radius={30} strokeColor="rgba(158, 158, 255, 1.0)" fillColor="rgba(158, 158, 255, 0.3)"></Circle>
       <Polyline coordinates={locations.map((loc) => loc.coords)}></Polyline>
     </MapView>
   );
@@ -40,7 +30,7 @@ const Map = () => {
 
 const styles = StyleSheet.create({
   map: {
-    height: 300,
+    height: "70%",
   },
 });
 

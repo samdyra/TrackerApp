@@ -16,32 +16,17 @@ const TrackForm = () => {
 
   return (
     <View style={styles.container}>
-      <Input
-        value={name}
-        placeholder="Enter name"
-        onChangeText={changeName}
-      ></Input>
+      <Input value={name} placeholder="Enter name" onChangeText={changeName}></Input>
 
-      {recording ? (
-        <Button title="Stop" onPress={stopRecording}></Button>
-      ) : (
-        <Button title="Start" onPress={startRecording}></Button>
-      )}
+      {recording ? <Button title="Stop" onPress={stopRecording}></Button> : <Button title="Start" onPress={startRecording}></Button>}
 
-      {!recording && locations.length ? (
-        <Button
-          title="Save Recording"
-          containerStyle={{ marginTop: 15 }}
-          onPress={saveTrack}
-        ></Button>
-      ) : null}
+      {!recording && locations.length ? <Button title="Save Recording" containerStyle={{ marginTop: 15 }} onPress={saveTrack}></Button> : null}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
     marginHorizontal: 15,
   },
 });

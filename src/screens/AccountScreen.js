@@ -10,11 +10,7 @@ const AccountScreen = () => {
   return (
     <SafeAreaView forceInset={{ top: "always" }}>
       <View>
-        <Button
-          title="Sign Out"
-          onPress={signout}
-          containerStyle={{ marginVertical: 75, marginHorizontal: 15 }}
-        ></Button>
+        <Button title="Sign Out" onPress={signout} containerStyle={{ marginVertical: 75, marginHorizontal: 15 }}></Button>
       </View>
     </SafeAreaView>
   );
@@ -28,7 +24,7 @@ const styles = StyleSheet.create({
 
 AccountScreen.navigationOptions = {
   title: "Account",
-  tabBarIcon: <FontAwesome name="gear" size={20}></FontAwesome>,
+  tabBarIcon: <FontAwesome name="gear" size={18}></FontAwesome>,
 };
 
 export default AccountScreen;

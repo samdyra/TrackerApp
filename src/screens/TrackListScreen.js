@@ -1,12 +1,5 @@
 import React, { useContext } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  Button,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { View, StyleSheet, Text, Button, FlatList, TouchableOpacity } from "react-native";
 import { NavigationEvents } from "react-navigation";
 import { Context as TrackContext } from "../context/TrackContext";
 import { ListItem } from "react-native-elements";
@@ -15,16 +8,8 @@ const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext);
   // console.log(state);
   return (
-    <>
-      <Text
-        style={{
-          fontSize: 30,
-          marginVertical: 30,
-        }}
-      >
-        {" "}
-        Track Lists
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Track Lists</Text>
       <NavigationEvents onWillFocus={fetchTracks}></NavigationEvents>
       <FlatList
         data={state}
@@ -46,7 +31,7 @@ const TrackListScreen = ({ navigation }) => {
           );
         }}
       ></FlatList>
-    </>
+    </View>
   );
 };
 
@@ -56,6 +41,19 @@ TrackListScreen.navigationOptions = () => {
   };
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginLeft: 20,
+    marginTop: 40,
+    marginRight: 20,
+  },
+  title: {
+    marginBottom: 20,
+    fontFamily: "sans-serif",
+    fontSize: 28,
+    fontWeight: "700",
+    marginLeft: 5,
+  },
+});
 
 export default TrackListScreen;

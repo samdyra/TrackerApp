@@ -24,9 +24,9 @@ const TrackCreateScreen = ({ isFocused }) => {
   return (
     <View style={styles.container}>
       <SafeAreaView forceInset={{ top: "always" }}>
-        <Text h2>Create a track</Text>
-        <Map></Map>
+        <Map style={styles.map}></Map>
         {err ? <Text>Please enable location services</Text> : null}
+        <Text style={styles.title}>Create Track</Text>
         <TrackForm></TrackForm>
       </SafeAreaView>
     </View>
@@ -34,15 +34,22 @@ const TrackCreateScreen = ({ isFocused }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-    marginHorizontal: 15,
+  container: {},
+  title: {
+    marginLeft: 18,
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  map: {
+    // height: 50,
   },
 });
 
 TrackCreateScreen.navigationOptions = {
   title: "Add Track",
-  tabBarIcon: <FontAwesome name="plus" size={20}></FontAwesome>,
+  tabBarIcon: <FontAwesome name="plus" size={18}></FontAwesome>,
 };
 
 export default withNavigationFocus(TrackCreateScreen);
